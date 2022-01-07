@@ -1,7 +1,9 @@
+import 'package:expenses_app/widgets/new_transaction.dart';
+import 'package:expenses_app/widgets/transaction_list.dart';
+import 'package:expenses_app/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import './transaction.dart';
+import './widgets/user_transactions.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,12 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  List<Transaction> transactions = [
-    Transaction(
-        id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,52 +29,11 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Card(child: Text('Chart!')),
-          Column(
-            children: transactions.map((tr) {
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.black,
-                        width: 2,
-                      )),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        '\$${tr.amount}',
-                        style: TextStyle(
-                            color: Colors.purple,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          tr.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        Text(
-                          DateFormat.yMMMd().format(tr.date),
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
+          UserTransactions()
         ],
       ),
     );
