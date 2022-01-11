@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
+      theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          accentColor: Colors.deepOrange)
     );
   }
 }
@@ -25,10 +28,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
-    Transaction(
-        id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
+    // Transaction(
+    //     id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
+    // Transaction(
+    //     id: 't1', title: 'First Purchase', amount: 25, date: DateTime.now()),
   ];
 
   void _addTransaction(String title, double amount) {
